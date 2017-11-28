@@ -6,7 +6,7 @@ Không bắt các lỗi ngoài tính năng.
 
 Server:
 - Khi Client Connect đến, thì lưu client lại trong 1 danh sách.
-- Client gửi tin nhắn lên server thì server gửi lại cho toàn bộ các client khác nội dung (Thread).
+- Client gửi tin nhắn lên server thì server gửi lại cho toàn bộ các client khác nội dung vừa đến (Thread).
 
 
 Client:
