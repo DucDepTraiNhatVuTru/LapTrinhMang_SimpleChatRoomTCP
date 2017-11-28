@@ -19,16 +19,11 @@ namespace Client
 
             while (true)
             {
-                //mt.Send();
                 Thread t1 = new Thread(new ThreadStart(mt.Recive));
                 Thread t2 = new Thread(new ThreadStart(mt.Send));
-                //t1.IsBackground = true;
-                //t2.Priority = ThreadPriority.Highest;
                 t2.Start();
                 t1.Start();
                 Thread.Sleep(1000);
-                
-                //mt.Recive();
             }
         }
        
@@ -58,12 +53,6 @@ namespace Client
         {
             _rec = nhan.ReadLine();
             Console.WriteLine(_rec);
-            /*while (true)
-            {
-                _rec = nhan.ReadLine();
-                Console.WriteLine(_rec);
-                break;
-            }*/
         }
 
         public void Send()
@@ -71,13 +60,6 @@ namespace Client
             string send = Console.ReadLine();
             gui.WriteLine(send);
             gui.Flush();
-            /*while (true)
-            {
-                string send = Console.ReadLine();
-                gui.WriteLine(send);
-                gui.Flush();
-                break;
-            }*/
         }
     }
 }
