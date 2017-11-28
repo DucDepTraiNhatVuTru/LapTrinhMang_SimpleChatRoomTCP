@@ -1,4 +1,7 @@
 # LapTrinhMang_SimpleChatRoomTCP
+
+Đang say nên có thể nhiều chổ nó hơi như "bull shit", nhưng mà nó chạy được nhé!
+
 Chương trình demo đơn giản trên console.
 Tính năng chỉ là client có thể gửi tin nhắn nhiều lần và nhận tin nhắn nhiều lần.
 Không bắt các lỗi ngoài tính năng.
