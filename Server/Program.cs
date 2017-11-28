@@ -34,6 +34,9 @@ namespace Server
         static Dictionary<EndPoint, Socket> Clients = new Dictionary<EndPoint, Socket>();
         Socket _sv;
         string _chuoiRecieve;
+        NetworkStream ns;
+        StreamWriter sw;
+        StreamReader sr;
         public MultiThread()
         {
 
@@ -42,12 +45,12 @@ namespace Server
         {
             _sv = sv;
             Clients.Add(sv.RemoteEndPoint, sv);
+            ns = new NetworkStream(_sv);
+            sw = new StreamWriter(ns);
+            sr = new StreamReader(ns);
         }
         public void Recieve()
         {
-            NetworkStream ns = new NetworkStream(_sv);
-            StreamWriter sw = new StreamWriter(ns);
-            StreamReader sr = new StreamReader(ns);
             while (true)
             {
                 _chuoiRecieve = sr.ReadLine();
@@ -62,7 +65,11 @@ namespace Server
             {
                 if(!item.Key.Equals(_sv.RemoteEndPoint))
                 {
-                    item.Value.Send(Encoding.ASCII.GetBytes(data));
+                    ns = new NetworkStream(item.Value);
+                    sw = new StreamWriter(ns);
+                    sw.WriteLine(data);
+                    sw.Flush();
+                    //item.Value.Send(Encoding.ASCII.GetBytes(data));
                 }
             }
         }
